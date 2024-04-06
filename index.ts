@@ -54,6 +54,7 @@ async function Createtodos(todos: string[]) {
         }
         
         if (operation.operator === "Delete") {
+           if(todos.length>1){
             let remove = await inquirer.prompt([
                 {
                     type: "list",
@@ -64,6 +65,11 @@ async function Createtodos(todos: string[]) {
             ]);
             todos = todos.filter(item => item !== remove.deleteitem);
             console.log(todos);
+           }
+           else{
+               console.log("Nothing to delete, Please add todos first.");
+           }
+        
         }
 
         if (operation.operator === "Exit") {
